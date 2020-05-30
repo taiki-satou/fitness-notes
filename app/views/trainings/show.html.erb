@@ -1,0 +1,39 @@
+<h1>id: <%= @training.id %> のトレーニング詳細ページ</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>日付</th>
+    <td><%= @training.date %></td>
+  </tr>
+  <tr>
+    <th>トレーニング</th>
+    <td><%= @training.content %></td>
+  </tr>
+  <tr>
+    <th>セット①：重量</th>
+    <td><%= @training.kg1 %></td>
+  </tr>
+  <tr>
+    <th>セット①：回数</th>
+    <td><%= @training.rep1 %></td>
+  </tr>
+  <tr>
+    <th>セット②：重量</th>
+    <td><%= @training.kg2 %></td>
+  </tr>
+  <tr>
+    <th>セット②：回数</th>
+    <td><%= @training.rep2 %></td>
+  </tr>
+  <tr>
+    <th>セット③：重量</th>
+    <td><%= @training.kg3 %></td>
+  </tr>
+  <tr>
+    <th>セット③：回数</th>
+    <td><%= @training.rep3 %></td>
+  </tr>
+</table>
+
+<%= link_to 'このトレーニングを編集する', edit_training_path(@training), class: 'btn btn-light' %>
+<%= link_to 'このトレーニングを削除する', @training, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>

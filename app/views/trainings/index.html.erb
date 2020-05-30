@@ -1,0 +1,45 @@
+<h1>トレーニング一覧</h1>
+
+<% if @trainings.any? %>
+  <%# 一旦重複しているものを取得し配列に整理する %>
+  <% h = {} %>
+  <% @trainings.each do |training| %>
+    <% if h[training[:date]].present? %>
+      <% h[training[:date]] << training %>
+    <% else %>
+      <% h[training[:date]] = [] %>
+      <% h[training[:date]] << training %>
+    <% end %>
+  <% end %>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>日付</th>
+        <th>トレーニング</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%# これから使うローカル変数を定義 %>
+      <% h.each do |date, trainings| %>
+        <tr>
+          <td>
+            <%= date %>
+          </td>
+          <td>
+            <%# ループで回して↓それぞれに link_to を付ける %>
+            <% trainings.each do |t| %>
+              <%= link_to t.content, t %>
+            <% end %> 
+            <%#= content.join(',') %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= paginate @trainings %>
+  </div>
+<% end %>
+
+<%= link_to '新規トレーニングの投稿', new_training_path, class: "btn btn-primary" %>

@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-6">
+    <%= form_with(model: training, local: true) do |f| %>
+      <% if training.errors.any? %>
+        <div id="error_explanation" class="alert alert-warning">
+          <ul>
+            <% training.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :date, '日付' %>
+        <%= date_field_tag 'training[date]', class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :content, 'トレーニング' %>
+        <%= f.text_field :content, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :kg1, '重量' %>
+        <%= f.number_field :kg1, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :rep1, '回数' %>
+        <%= f.number_field :rep1, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :kg2, '重量' %>
+        <%= f.number_field :kg2, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :rep2, '回数' %>
+        <%= f.number_field :rep2, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :kg3, '重量' %>
+        <%= f.number_field :kg3, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :rep3, '回数' %>
+        <%= f.number_field :rep3, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :kg4, '重量' %>
+        <%= f.number_field :kg4, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :rep4, '回数' %>
+        <%= f.number_field :rep4, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :kg5, '重量' %>
+        <%= f.number_field :kg5, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :rep5, '回数' %>
+        <%= f.number_field :rep5, class: 'form-control' %>
+      </div>
+
+      <%= f.submit '作成', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
