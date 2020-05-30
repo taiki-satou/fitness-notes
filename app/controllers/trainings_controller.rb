@@ -1,5 +1,6 @@
 class TrainingsController < ApplicationController
   before_action :require_user_logged_in
+  before_action :correct_user, only: [:show, :edit, :destroy]
   
   def index
     @trainings = current_user.trainings.order(created_at: :desc).page(params[:page])
@@ -55,5 +56,12 @@ class TrainingsController < ApplicationController
   # Strong Parameter
   def training_params
     params.require(:training).permit(:content,:date,:kg1,:rep1,:kg2,:rep2,:kg3,:rep3,:kg4,:rep4,:kg5,:rep5)
+  end
+  
+  def correct_user
+    @training = current_user.trainings.find_by(id: params[:id])
+    unless @training
+      redirect_to root_url
+    end
   end
 end
